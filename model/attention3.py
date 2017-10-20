@@ -30,9 +30,9 @@ class Attention3(nn.Module):
         nn.init.xavier_uniform(self.linear_1.weight)
 
         if args.cuda:
-            self.u = Parameter(torch.randn(1, args.attention_size).cuda(), requires_grad=True)
+            self.u = Variable(torch.randn(1, args.attention_size).cuda(), requires_grad=True)
         else:
-            self.u = Parameter(torch.randn(1, args.attention_size), requires_grad=True)
+            self.u = Variable(torch.randn(1, args.attention_size), requires_grad=True)
         nn.init.xavier_uniform(self.u)
 
         self.linear_2 = nn.Linear(args.hidden_size * 2, args.label_num, bias=True)
